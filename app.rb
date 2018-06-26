@@ -1,18 +1,15 @@
-require_relative 'config/environment'
+get'/:operation/:number1/:number2' do
+  @operation=params[:operation]
+  @number1=params[:number1].to_i
+  @number2=params[number2].to_i
 
-class App < Sinatra::Base
-
-  # This is a sample static route.
-  get '/hello' do
-    "Hello World!"
+  if @operation=="add"
+    @number1+@number2
+  elsif @operation=="subtract"
+    @number1-@number2
+  elsif @operation=="multiply"
+    @number1*@number2
+  else
+    @number1/@number2
   end
-
-  # This is a sample dynamic route.
-  get "/hello/:name" do
-    @user_name = params[:name]
-    "Hello #{@user_name}!"
-  end
-
-  # Code your final two routes here:
-
 end
